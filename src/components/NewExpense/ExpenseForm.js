@@ -3,20 +3,50 @@ import "./ExpenseForm.css";
 
 const ExpenseForm = () => {
 
-  const [enteredTitle, setEnteredTitle] = useState('');
-  const [enteredAmount, setEnteredAmount] = useState('');
-  const [enteredDate, setEnteredDate] = useState('');
+  // Method 1 : Multiple slices of state
+  // const [enteredTitle, setEnteredTitle] = useState('');
+  // const [enteredAmount, setEnteredAmount] = useState('');
+  // const [enteredDate, setEnteredDate] = useState('');
+
+  // Method 2 : one single state for storing all the 3 values.
+  const [userInput, setUserInput] = useState({
+    enteredTitle: '',
+    enteredAmount: '',
+    enteredDate: ''
+  });
 
     const titleChangeHandler = (event) => {
-        setEnteredTitle(event.target.value);
+      // Method 1 :
+      // setEnteredTitle(event.target.value);
+
+      // Method 2 : 
+      setUserInput({
+        ...userInput,
+        enteredTitle: event.target.value
+      });
+
     }
 
     const amountChangeHandler = event => {
-      setEnteredAmount(event.target.value);
+       // Method 1 :
+      // setEnteredTitle(event.target.value);
+
+      // Method 2 : 
+      setUserInput({
+        ...userInput,
+        enteredAmount: event.target.value,
+      });
     }
 
     const dateChangeHandler = event => {
-      setEnteredDate(event.target.value);
+       // Method 1 :
+      // setEnteredTitle(event.target.value);
+
+      // Method 2 : 
+      setUserInput({
+        ...userInput,
+        enteredDate: event.target.value,
+      })
     }
 
   return (
@@ -25,6 +55,7 @@ const ExpenseForm = () => {
         <div className="new-expense__control">
           <label>Title</label>
           <input type="text" onChange={titleChangeHandler} />
+          <h2>{enteredAmount}</h2>
         </div>
 
         <div className="new-expense__control">
