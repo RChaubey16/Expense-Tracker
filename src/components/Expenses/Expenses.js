@@ -22,6 +22,7 @@ function Expenses(props) {
         {/* Map function takes every element in the expenses array and passes it to the expense-item compo dynamically. */}
         {props.items.map((expense) => (
           <ExpenseItem
+            key={expense.key}
             title={expense.title}
             amount={expense.amount}
             date={expense.date}
