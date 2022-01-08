@@ -12,6 +12,12 @@ function Expenses(props) {
     setYear(year);
   };
 
+  // filter array method always returns a new array and does not modify the array it is filtering
+  // Hence we are storing the new array in filteredExpenses.
+  const filteredExpenses = props.items.filter((expense) => {
+    return expense.date.getFullYear().toString() === year;
+  });
+
   return (
     <div>
       <Card className="expenses">
@@ -19,8 +25,9 @@ function Expenses(props) {
           selectedYear={year}
           onfilterYearHandlerr={filterYearHandler}
         />
+
         {/* Map function takes every element in the expenses array and passes it to the expense-item compo dynamically. */}
-        {props.items.map((expense) => (
+        {filteredExpenses.map((expense) => (
           <ExpenseItem
             key={expense.key}
             title={expense.title}
