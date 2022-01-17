@@ -4,7 +4,6 @@ import ExpenseDate from "./ExpenseDate";
 import "./ExpenseItem.css";
 
 function ExpenseItem(props) {
-
   // useState hook : Used to change any variable or content of the site.
   // const [title, setTitle] = useState(props.title);
   // const [amount, setAmount] = useState(props.amount);
@@ -17,13 +16,15 @@ function ExpenseItem(props) {
   // }
 
   return (
-    <Card className="expense-item">
-      <ExpenseDate date = {props.date} />
-      <div className="expense-item__description">
-        <h2>{props.title}</h2>
-        <div className="expense-item__price">$ {props.amount} </div>
-      </div>
-    </Card>
+    <li>
+      <Card className="expense-item">
+        <ExpenseDate date={props.date} />
+        <div className="expense-item__description">
+          <h2>{props.title}</h2>
+          <div className="expense-item__price">$ {props.amount} </div>
+        </div>
+      </Card>
+    </li>
   );
 }
 

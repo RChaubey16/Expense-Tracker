@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react/cjs/react.development";
 import Card from "../UI/Card";
 import ExpenseFilter from "./ExpenseFilter";
-import ExpenseItem from "./ExpenseItem";
+import ExpensesList from "./ExpensesList";
 import "./Expenses.css";
 
 function Expenses(props) {
@@ -18,20 +18,6 @@ function Expenses(props) {
     return expense.date.getFullYear().toString() === year;
   });
 
-  let expensesContent = <p>No Expenses Found!</p>;
-
-  if (filteredExpenses.length > 0) {
-    expensesContent = filteredExpenses.map((expense) => (
-      //  Map function takes every element in the expenses array and passes it to the expense-item compo dynamically. 
-      <ExpenseItem
-        key={expense.key}
-        title={expense.title}
-        amount={expense.amount}
-        date={expense.date}
-      />
-    ));
-  }
-
   return (
     <div>
       <Card className="expenses">
@@ -40,8 +26,7 @@ function Expenses(props) {
           onfilterYearHandlerr={filterYearHandler}
         />
 
-       {expensesContent}
-       
+        <ExpensesList items={filteredExpenses} />
       </Card>
     </div>
   );
